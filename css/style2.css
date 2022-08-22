@@ -1,0 +1,8 @@
+.wraper .items{
+    background-color: antiquewhite;
+    width: 80%;
+    margin: 0 auto;
+    color: rgb(2, 15, 126);
+    margin-bottom: 1rem;
+    padding: 1rem;
+  }

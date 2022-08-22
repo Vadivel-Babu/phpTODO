@@ -61,6 +61,11 @@
   .todolist .item .check {
     cursor: pointer;
     width: 100%;
+    border: 0;
+    background-color: rgb(247, 181, 0);
+  }
+  .check:focus{
+    outline:none;
   }
   .todolist .item .check.checked {
     opacity: 0.5;
@@ -88,3 +93,4 @@
   .todolist .item .btn button.edit {
     background-color: green;
   }/*# sourceMappingURL=style.css.map */
+  

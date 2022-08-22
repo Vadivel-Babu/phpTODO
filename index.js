@@ -7,12 +7,13 @@ const todolist = document.querySelector('.todolist')
 
 let todoList = {}
 
+let keyID = 0
 let ID = 0
 
 const addTodo = (e) => {
     e.preventDefault()
     
-    if(input.value.length === 0 || input.value.trim().length === 0) return
+    if(input.value.length === 0 || input.value.trim().length === 0) return;
    let localstore = JSON.parse(localStorage.getItem('Item'))
    if(localstore === null){
     todoList = {}
@@ -20,8 +21,8 @@ const addTodo = (e) => {
     todoList = localstore; 
    }
   
-
-   todoList[ID++] = {data:input.value}
+   
+   todoList[keyID++] = {data:input.value,id:ID++}
    console.log(todoList)
    localStorage.setItem("Item",JSON.stringify(todoList))
    showTodo()
@@ -33,13 +34,14 @@ add.addEventListener('click',addTodo)
 function showTodo(){
     let todos = ''
     let localstore = JSON.parse(localStorage.getItem('Item'))
-    console.log('šhow run')
+   
     if(localstore === null){
         todoList = {}
     }else{
         todoList = localstore; 
     }
-    console.log(todolist)
+   
+    
    
     Object.values(todoList).forEach((data) => {
         todos+=`<div class="item">
@@ -50,7 +52,7 @@ function showTodo(){
          </div>
        </div>`
     });
-    // todolist.insertAdjacentHTML("afterbegin", todos);
+  
     todolist.innerHTML = todos
 }
 showTodo()
@@ -68,8 +70,9 @@ function edit(e,index){
    
 }
 function Delete(e,id){
+    console.log(e,id)
     let localstore = JSON.parse(localStorage.getItem('Item'))
-    todoList.filter(data => console.log(data.id !== id,todoList))
+    todoList = Object.values(todoList).filter(data => data.id !== id);
     
     localStorage.setItem("Item",JSON.stringify(todoList))
     
